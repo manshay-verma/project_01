@@ -1,26 +1,37 @@
 import './App.css';
-import MessageCard from './component/MessageCard';
-import FeedbackForm from './component/FeedbackForm';
+import Home from "./pages/Home";
+import MessagesPage from "./pages/MessagePage";
+import FeedbackPage from "./pages/FeedBackpage";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  const messages = [
-    { sender: 'Mom', text: 'Dinner is ready!' },
-    { sender: 'Boss', text: 'Meeting at 3 PM!' },
-    { sender: 'Friend', text: 'Wanna go out?' },
-    { sender: 'AI Bot 🤖', text: 'You are learning fast!' }
-  ];
+  // const messages = [
+  //   { sender: 'Mom', text: 'Dinner is ready!' },
+  //   { sender: 'Boss', text: 'Meeting at 3 PM!' },
+  //   { sender: 'Friend', text: 'Wanna go out?' },
+  //   { sender: 'AI Bot 🤖', text: 'You are learning fast!' }
+  // ];
   return (
-    <div className='App'>
-      <h1>💬 Message List</h1>
+    <>
+    <BrowserRouter>
+      <div className="App">
+        <h1>🌐 React Router Demo</h1>
 
-      {messages.map((msg,index)=>(
-      <div key={index}>
-        <p><strong>#{index + 1}</strong></p> {/* Index printed here */}
-        <MessageCard sender={msg.sender} text={msg.text} />
-      </div>
-      ))}
-      <FeedbackForm/>
-    </div>
+        {/* Navigation Links */}
+        <nav style={{ marginBottom: "20px" }}>
+          <Link to="/" style={{ marginRight: "15px" }}>Home</Link>
+          <Link to="/messages" style={{ marginRight: "15px" }}>Messages</Link>
+          <Link to="/feedback">Feedback</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
+        </Routes>
+        </div>
+    </BrowserRouter>
+    </>
   );
 }
 

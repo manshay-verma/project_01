@@ -1,5 +1,6 @@
 import './App.css';
 import MessageCard from './component/MessageCard';
+import FeedbackForm from './component/FeedbackForm';
 
 function App() {
   const messages = [
@@ -11,12 +12,14 @@ function App() {
   return (
     <div className='App'>
       <h1>💬 Message List</h1>
+
       {messages.map((msg,index)=>(
-        <div key={index}>
-    <p><strong>#{index + 1}</strong></p> {/* Index printed here */}
-    <MessageCard sender={msg.sender} text={msg.text} />
-  </div>
+      <div key={index}>
+        <p><strong>#{index + 1}</strong></p> {/* Index printed here */}
+        <MessageCard sender={msg.sender} text={msg.text} />
+      </div>
       ))}
+      <FeedbackForm/>
     </div>
   );
 }
